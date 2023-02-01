@@ -4,10 +4,10 @@ import графики as graph
 import time
 start_time = time.time()
 day = '27'
-month = '01 1'
+month = '01'
 date = day + month
 date1 = day + '.' + month
-date2 = '29.01'
+date2 = '31.01'
 name = date1 + ' - ' + date2
 prod.prod(date)
 print("--- %s seconds ---" % (time.time() - start_time))
