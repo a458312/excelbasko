@@ -1,6 +1,5 @@
 import openpyxl as xl
 from openpyxl.styles import Font
-from openpyxl.styles import PatternFill
 from openpyxl import Workbook
 import win32com.client as win32
 import sys
@@ -19,7 +18,7 @@ def prod(date):
             except Exception as e:
                 print(e)
                 xlwb = None
-        return (xlwb)
+        return xlwb
 
     try:
         excel = win32.gencache.EnsureDispatch('Excel.Application')
@@ -152,7 +151,7 @@ def prod(date):
     wb1.save('C:/Users/a4583/OneDrive/Desktop/work/продажи.xlsx')
 
 
-def run_excel(filename: str, sheet_name: str):
+def run_excel(filename: str):
 
     # create excel object
     excel = win32.gencache.EnsureDispatch('Excel.Application')
@@ -182,7 +181,7 @@ def run_excel(filename: str, sheet_name: str):
     pt_rows = ['Магазин', 'Артикул', 'Наименование']  # must be a list
     pt_cols = []  # must be a list
     pt_filters = []  # must be a list
-    # [0]: field name [1]: pivot table column name [3]: calulation method [4]: number format
+    # [0]: field name [1]: pivot table column name [3]: calculation method [4]: number format
     pt_fields = [['Пришло', 'Sum of Пришло', win32c.xlSum, '0,00'],  # must be a list of lists
                  ['С/С Расчетное', 'Sum of С/С Расчетное', win32c.xlSum, '0,00'],
                  ['Продано', 'Sum of Продано', win32c.xlSum, '0,00'],
@@ -252,7 +251,7 @@ def pivot_table(wb: object, ws1: object, pt_ws: object, ws_name: str, pt_name: s
         pt_ws.PivotTables(pt_name).AddDataField(pt_ws.PivotTables(pt_name).PivotFields(field[0]), field[1],
                                                 field[2]).NumberFormat = field[3]
 
-    # Visiblity True or false
+    # Visibility True or false
     pt_ws.PivotTables(pt_name).ShowValuesRow = True
     pt_ws.PivotTables(pt_name).ColumnGrand = True
 
@@ -270,4 +269,4 @@ def perc(name):
         ws.cell(row=i, column=7).value = '=e'+str(i)+'/c'+str(i)
         ws.cell(row=i, column=7).number_format = '0.00%'
     wb.save('C:/Users/a4583/OneDrive/Desktop/work/продажи.xlsx')
-    wb.save('C:/Users/a4583/OneDrive/Desktop/work/продажи ' + name +'.xlsx')
+    wb.save('C:/Users/a4583/OneDrive/Desktop/work/продажи ' + name + '.xlsx')

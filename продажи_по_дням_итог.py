@@ -94,6 +94,7 @@ def copy(date, date1, date2):
     wb = xl.load_workbook('C:/Users/a4583/OneDrive/Desktop/work/продажи_по_дням_сбор ' + date + '.xlsx')
     wb2 = xl.load_workbook('C:/Users/a4583/OneDrive/Desktop/work/продажи_по_дням_сбор ' + date + '.xlsx')
     ws = wb.active
+    # noinspection PyBroadException
     try:
         wb1 = xl.load_workbook('C:/Users/a4583/OneDrive/Desktop/work/по дням с ' + date1 + '.xlsx')
     except Exception:
@@ -113,7 +114,7 @@ def copy(date, date1, date2):
     wb1.save('C:/Users/a4583/OneDrive/Desktop/work/по дням с ' + date1 + '.xlsx')
 
 
-def run_excel(filename: str, sheet_name: str):
+def run_excel(filename: str):
     wb = xl.load_workbook(filename)
     ws = wb.active
     col = ws.max_column
