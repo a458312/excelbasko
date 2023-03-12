@@ -3,11 +3,11 @@ import продажи_по_дням_итог as dni
 import графики as graph
 import time
 start_time = time.time()
-day = '27'
-month = '01'
+day = '03'
+month = '03'
 date = day + month
 date1 = day + '.' + month
-date2 = '06.02'
+date2 = '03.03'
 name = date1 + ' - ' + date2
 prod.prod(date)
 print("--- %s seconds ---" % (time.time() - start_time))
